@@ -1,0 +1,110 @@
+$font-color: #333333;
+$linkColor: #515457;
+$main-color: #2FB3FF;
+$gray: #989898;
+$red: #E74643;
+$money: #F56240;
+
+
+// 块化图片
+@mixin block_image {
+  display: block;
+  width: 100%;
+}
+
+// 单行溢出省略符
+@mixin ellipsis_line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// 多行溢出
+@mixin ellipsis($lines) {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+}
+
+// flex 垂直分布，横向左右分布
+@mixin center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+// 清除浮动
+@mixin clear_fix {
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+// 全屏撑满
+@mixin full_fixed {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+}
+
+
+// 价格,按照以下模板
+// <span>￥<i>999</i></span>
+@mixin price($size, $color: #F56240) {
+  color: $color;
+  > i {
+    font-size: $size * 1px;
+    font-style: normal;
+  }
+}
+
+
+// 图片占位
+/*
+  <div>
+    <div class=".placeholder-view-image">
+      <img class="view-image" src />
+    </div>
+  </div>
+
+ */
+
+@mixin placeholder_view($ratio) {
+  $padding_top: $ratio * 100%;
+  padding-top: $padding_top;
+  position: relative;
+
+  > .placeholder-view-image {
+    padding-top: $padding_top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    > .view-image {
+      @include block_image;
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+    }
+  }
+}
+
+/**
+ * 带图标的块
+ * @param  {number} $size 背景大小，包含两个值
+ * @param  {number} $pl   左边距
+ * @param  {number} $left 顶部距离
+ */
+@mixin text_icon($size, $pl, $top) {
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $pl $top;
+}
