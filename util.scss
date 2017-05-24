@@ -1,0 +1,14 @@
+// 根据设计稿750的素材转换成对应的rem值，配合flexible使用的
+@function r($pt) {
+  @return #{$pt * 2 / 75}rem
+}
+
+// 黑色透明
+@function black($t) {
+  @return rgba(0, 0, 0, $t);
+}
+
+// 白色透明
+@function white($t) {
+  @return rgba(255, 255, 255, $t)
+}
