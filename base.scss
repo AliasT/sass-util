@@ -15,6 +15,7 @@
 
 // 多行溢出
 @mixin ellipsis($lines) {
+  overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: $lines;
@@ -102,3 +103,32 @@
   background-size: $size;
   background-position: $pl $top;
 }
+
+
+/**
+ * 图形较复杂的图标
+ * @param  {number} $width  图标宽度，尽量设一个偏大的值
+ * @param  {number} $height 图标高度
+ * @param  {} $dir    [description]
+ * @return {[type]}         [description]
+ */
+@mixin only_icon($width, $height, $dir) {
+  display: inline-block;
+  width: $width;
+  height: $height;
+  background: $dir center no-repeat;
+  background-size: auto 100%;
+}
+
+
+// 行高高度相同
+@mixin height_line($px) {
+  line-height: $px;
+  height: $px;
+}
+
+// 适用于正方形图片的背景居中
+@mixin avatar($image) {
+  background: image($image) no-repeat center center / 100% 100%;
+}
+
